@@ -1,7 +1,7 @@
 -- migrate:up
 
 CREATE TABLE priorities (
-	id	SERIAL PRIMARY KEY,
+	id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	name	VARCHAR(25) NOT NULL
 );
 

@@ -1,7 +1,7 @@
 -- migrate:up
 
 CREATE TABLE service_tickets (
-	id	SERIAL PRIMARY KEY,
+	id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   ticket_id	INT,
 	FOREIGN KEY(ticket_id) REFERENCES tickets ( id ) ON DELETE CASCADE
 );

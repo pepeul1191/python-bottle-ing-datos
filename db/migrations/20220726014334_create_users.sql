@@ -1,10 +1,10 @@
 -- migrate:up
 
 CREATE TABLE users (
-	id	SERIAL PRIMARY KEY,
+	id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   "user"	VARCHAR(145) NOT NULL,
   password	VARCHAR(145) NOT NULL,
-	last_login	TIMESTAMP NOT NULL,
+	last_login	TIMESTAMP,
   worker_id	INT,
   activation_key VARCHAR(25),
   reset_key VARCHAR(25),

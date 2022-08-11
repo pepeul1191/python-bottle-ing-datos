@@ -1,7 +1,7 @@
 -- migrate:up
 
 CREATE TABLE service_types (
-	id	SERIAL PRIMARY KEY,
+	id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	name	VARCHAR(40) NOT NULL
 );
 

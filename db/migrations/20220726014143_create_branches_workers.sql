@@ -1,7 +1,7 @@
 -- migrate:up
 
 CREATE TABLE branches_workers (
-	id	SERIAL PRIMARY KEY,
+	id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   worker_id	INT,
   branch_id	INT,
   FOREIGN KEY(worker_id) REFERENCES workers ( id ) ON DELETE CASCADE,
