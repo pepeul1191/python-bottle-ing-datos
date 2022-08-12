@@ -9,6 +9,11 @@ app = Bottle()
 def home():
   return template('home')
 
+# static files
+@app.route('/:filename#.*#')
+def send_static(filename):
+  return static_file(filename, root='./static')
+
 run(
   app, host='localhost', port=8080, debug=True,reloader=True
 )
