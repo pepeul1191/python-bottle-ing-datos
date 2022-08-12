@@ -1,1 +1,3 @@
 lorem-text
+bottle
+python-dotenv
