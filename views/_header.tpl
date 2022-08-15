@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<ul>
+<ul class="left-menu">
 % for item in locals['menu']:
   % if item['active'] == True: 
     <li><a class="active" href="{{item['url']}}">{{item['name']}}</a></li>

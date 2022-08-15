@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-ul {
+.left-menu {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -13,19 +13,19 @@ ul {
   overflow: auto;
 }
 
-li a {
+.left-menu > li a {
   display: block;
   color: #000;
   padding: 8px 16px;
   text-decoration: none;
 }
 
-li a.active {
+.left-menu > li a.active {
   background-color: #F37021;
   color: white;
 }
 
-li a:hover:not(.active) {
+.left-menu > li a:hover:not(.active) {
   background-color: #555;
   color: white;
 }
@@ -41,17 +41,21 @@ table > thead > tr > th{
   padding-right: 10px;
   text-decoration: none;
   color: #000;
+  background-color: #f1f1f1;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
 }
 
 .btn:hover{
   background-color: #555;
   text-decoration: none;
-  color: #f1f1f1;
+  color: #dadada;
   cursor: pointer;
 }
 
 td > .btn{
   border: 0px;
+  background-color: transparent;
 }
 
 #app-container{
@@ -71,4 +75,8 @@ thead > tr > th{
 
 tbody > tr > td{
   border: 1px solid black;
+}
+
+h3{
+  color: #F37021;
 }
