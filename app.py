@@ -5,6 +5,7 @@ import functools
 from bottle import Bottle, run, template, error, static_file, HTTPResponse
 from routes.home import subapp as home_routes
 from routes.branch import subapp as branch_routes
+from routes.position import subapp as position_routes
 from configs.helpers import menu
 
 app = Bottle()
@@ -37,6 +38,7 @@ if __name__ == '__main__':
   # mounting sub apps
   app.mount('/demo', home_routes)
   app.mount('/branch', branch_routes)
+  app.mount('/position', position_routes)
   # run app
   run(
     app, host='localhost', port=8080, debug=True,reloader=True
