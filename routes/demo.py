@@ -12,5 +12,5 @@ def home():
     'title': 'Demo',
     'menu': menu('/demo'),
   }
-  boby_template = template('demo', locals = locals)
+  boby_template = template('demo/index', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)

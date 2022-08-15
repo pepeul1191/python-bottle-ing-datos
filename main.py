@@ -3,10 +3,13 @@
 
 import functools
 from bottle import Bottle, run, template, error, static_file, HTTPResponse
-from routes.home import subapp as home_routes
+from routes.demo import subapp as demo_routes
 from routes.branch import subapp as branch_routes
 from routes.position import subapp as position_routes
 from routes.ticket import subapp as ticket_routes
+from routes.employee import subapp as employee_routes
+from routes.priority import subapp as priority_routes
+from routes.state import subapp as state_routes
 from configs.helpers import menu
 
 app = Bottle()
@@ -37,9 +40,12 @@ def send_static(filename):
 
 if __name__ == '__main__':
   # mounting sub apps
-  app.mount('/demo', home_routes)
+  app.mount('/demo', demo_routes)
   app.mount('/branch', branch_routes)
   app.mount('/position', position_routes)
+  app.mount('/employee', employee_routes)
+  app.mount('/priority', priority_routes)
+  app.mount('/state', state_routes)
   app.mount('/ticket', ticket_routes)
   # run app
   run(
