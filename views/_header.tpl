@@ -18,4 +18,4 @@
   % end
 % end
 </ul>
-<div id="container">
+<div id="app-container">

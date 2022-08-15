@@ -30,8 +30,44 @@ li a:hover:not(.active) {
   color: white;
 }
 
-#container{
+table > thead > tr > th{
+  text-align: left;
+}
+
+.btn{
+  border: 1px solid #000;
+  padding: 4px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+.btn:hover{
+  background-color: #555;
+  text-decoration: none;
+  color: #f1f1f1;
+}
+
+td > .btn{
+  border: 0px;
+}
+
+#app-container{
   margin-left:25%;
   padding:1px 16px;
   height:1000px;
+  padding-bottom: 30px;
+}
+
+.text-center{
+  text-align: center;
+}
+
+thead > tr > th{
+  border: 1px solid black;
+}
+
+tbody > tr > td{
+  border: 1px solid black;
 }

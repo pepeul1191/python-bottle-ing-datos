@@ -1,3 +1,4 @@
 lorem-text
 bottle
 python-dotenv
+SQLAlchemy
