@@ -27,7 +27,7 @@
       % end
     </tbody>
     <tfoot>
-      <a class="btn" href="/branch/create?type_id=1">Agregar Sede de Lima</a>
+      <a class="btn" href="/branch/create?branch_type_id=1">Agregar Sede de Lima</a>
       <br>
       <br>
     </tfoot>
@@ -59,7 +59,7 @@
       % end
     </tbody>
     <tfoot>
-      <a class="btn" href="/branch/create?type_id=2">Agregar Sede de Provincias</a>
+      <a class="btn" href="/branch/create?branch_type_id=2">Agregar Sede de Provincias</a>
       <br>
       <br>
     </tfoot>

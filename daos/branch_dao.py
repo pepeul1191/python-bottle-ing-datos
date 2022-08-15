@@ -14,3 +14,10 @@ def get_province_branches():
     SELECT * FROM branches WHERE branch_type_id=2
   """).format(1)
   return [dict(r) for r in conn.execute(stmt)]
+
+def get_branches():
+  conn = engine.connect()
+  stmt = ("""
+    SELECT * FROM branches
+  """).format(1)
+  return [dict(r) for r in conn.execute(stmt)]

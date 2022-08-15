@@ -47,6 +47,7 @@ table > thead > tr > th{
   background-color: #555;
   text-decoration: none;
   color: #f1f1f1;
+  cursor: pointer;
 }
 
 td > .btn{
