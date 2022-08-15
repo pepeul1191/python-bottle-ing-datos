@@ -1,7 +1,8 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import functools
+import os
+from dotenv import load_dotenv
 from bottle import Bottle, run, template, error, static_file, HTTPResponse
 from routes.demo import subapp as demo_routes
 from routes.branch import subapp as branch_routes
@@ -48,6 +49,8 @@ if __name__ == '__main__':
   app.mount('/state', state_routes)
   app.mount('/ticket', ticket_routes)
   # run app
+  load_dotenv()
+  print(os.getenv('ENV'))
   run(
     app, host='localhost', port=8080, debug=True,reloader=True
   )
