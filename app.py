@@ -8,7 +8,10 @@ app = Bottle()
 
 @app.route('/', method='GET')
 def home():
-  return template('home')
+  locals = {
+    'title': 'Bienvenido',
+  }
+  return template('home', locals=locals)
 
 # errors
 @app.error(404)
