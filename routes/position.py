@@ -14,7 +14,7 @@ def home():
     'menu': menu('/branch'),
     'positions': get_all(),
   }
-  boby_template = template('position', locals = locals)
+  boby_template = template('position/index', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)
 
 @subapp.route('/create', method='GET')
@@ -29,7 +29,7 @@ def create_view():
     },
     'form_title': form_title,
   }
-  boby_template = template('position_detail', locals = locals)
+  boby_template = template('position/detail', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)
 
 @subapp.route('/edit', method='GET')
@@ -46,7 +46,7 @@ def edit_view():
       },
       'form_title': form_title,
     }
-    boby_template = template('position_detail', locals = locals)
+    boby_template = template('position/detail', locals = locals)
     return HTTPResponse(status = 200, body = boby_template)
   else:
     locals = {

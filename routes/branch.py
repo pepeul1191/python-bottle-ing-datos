@@ -16,7 +16,7 @@ def home():
     'lima_branches': get_lima_branches(),
     'province_branches': get_province_branches(),
   }
-  boby_template = template('branch', locals = locals)
+  boby_template = template('branch/index', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)
 
 @subapp.route('/create', method='GET')
@@ -39,7 +39,7 @@ def create_view():
     'branch_type_list': branch_type_all(),
     'branch_type_id': request.params.branch_type_id,
   }
-  boby_template = template('branch_detail', locals = locals)
+  boby_template = template('branch/detail', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)
 
 @subapp.route('/edit', method='GET')
@@ -64,7 +64,7 @@ def edit_view():
       'branch_type_list': branch_type_all(),
       'branch_type_id': branch['branch_type_id'],
     }
-    boby_template = template('branch_detail', locals = locals)
+    boby_template = template('branch/detail', locals = locals)
     return HTTPResponse(status = 200, body = boby_template)
   else:
     locals = {
