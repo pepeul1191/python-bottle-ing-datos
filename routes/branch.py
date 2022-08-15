@@ -3,7 +3,7 @@
 
 from bottle import Bottle, template, request, HTTPResponse
 from configs.helpers import menu
-from daos.branch_dao import get_lima_branches, get_province_branches, get_branch_by_id
+from daos.branch_dao import get_lima_branches, get_province_branches, get_branch_by_id, create, update
 from daos.branch_type_dao import get_all as branch_type_all
 
 subapp = Bottle()
@@ -64,4 +64,35 @@ def edit_view():
     'branch_type_id': branch['branch_type_id'],
   }
   boby_template = template('branch_detail', locals = locals)
+  return HTTPResponse(status = 200, body = boby_template)
+
+@subapp.route('/save', method='POST')
+def save():
+  message = ''
+  if request.forms.get('id') == 'E':
+    message = 'Se ha creado una nueva sede'
+    create(
+      request.forms.get('name'),
+      request.forms.get('address'),
+      request.forms.get('phone'),
+      request.forms.get('whatsapp'),
+      request.forms.get('branch_type_id'),
+    )
+  else:
+    message = 'Se ha editado nueva sede'
+    update(
+      request.forms.get('id'),
+      request.forms.get('name'),
+      request.forms.get('address'),
+      request.forms.get('phone'),
+      request.forms.get('whatsapp'),
+      request.forms.get('branch_type_id'),
+    )
+  locals = {
+    'title': 'Notifiación: ' + message,
+    'message': message,
+    'url': '/branch',
+    'menu': menu('/xd'),
+  }
+  boby_template = template('_notification', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)

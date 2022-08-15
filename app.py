@@ -1,6 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import functools
 from bottle import Bottle, run, template, error, static_file, HTTPResponse
 from routes.home import subapp as home_routes
 from routes.branch import subapp as branch_routes
