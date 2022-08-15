@@ -10,6 +10,12 @@
 </head>
 <body>
 <ul>
-  
+% for item in locals['menu']:
+  % if item['active'] == True: 
+    <li><a class="active" href="{{item['url']}}">{{item['name']}}</a></li>
+  % else:
+    <li><a href="{{item['url']}}">{{item['name']}}</a></li>
+  % end
+% end
 </ul>
-<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+<div id="container">

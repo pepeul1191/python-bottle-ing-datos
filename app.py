@@ -3,6 +3,7 @@
 
 from bottle import Bottle, run, template, error, static_file, HTTPResponse
 from routes.home import subapp as home_routes
+from configs.helpers import menu
 
 app = Bottle()
 
@@ -10,13 +11,20 @@ app = Bottle()
 def home():
   locals = {
     'title': 'Bienvenido',
+    'menu': menu('/'),
   }
-  return template('home', locals=locals)
+  boby_template = template('home', locals = locals)
+  return HTTPResponse(status = 200, body = boby_template)
 
 # errors
 @app.error(404)
 def error404(error):
-  return HTTPResponse(status = 404, body = 'error 404')
+  locals = {
+    'title': 'Error 404',
+    'menu': menu('/xd'),
+  }
+  boby_template = template('error', locals = locals)
+  return HTTPResponse(status = 404, body = boby_template)
 
 # static files
 @app.route('/:filename#.*#')

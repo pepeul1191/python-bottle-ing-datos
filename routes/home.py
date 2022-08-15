@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from bottle import Bottle, request, HTTPResponse
+from bottle import Bottle, template, HTTPResponse
+from configs.helpers import menu
 
 subapp = Bottle()
 
 @subapp.route('/', method='GET')
 def home():
-  status = 200
-  resp = 'hola desdel nuevo home'
-  return HTTPResponse(status = status, body = resp)
+  locals = {
+    'title': 'Demo',
+    'menu': menu('/demo'),
+  }
+  boby_template = template('demo', locals = locals)
+  return HTTPResponse(status = 200, body = boby_template)
