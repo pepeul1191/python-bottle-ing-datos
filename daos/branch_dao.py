@@ -34,9 +34,6 @@ def create(name, address, phone, whatsapp, branch_type_id):
   return rs.lastrowid
 
 def update(id, name, address, phone, whatsapp, branch_type_id):
-  print('1 +++++++++++++++++++++++++')
-  print(address)
-  print('2 +++++++++++++++++++++++++')
   conn = engine.connect()
   stmt = ("""
     UPDATE branches SET 
@@ -47,9 +44,17 @@ def update(id, name, address, phone, whatsapp, branch_type_id):
   rs = conn.execute(stmt)
   return rs
 
+def delete(id):
+  conn = engine.connect()
+  stmt = ("""
+    DELETE FROM branches WHERE id={};
+  """).format(id)
+  rs = conn.execute(stmt)
+  return rs
+
 def get_branch_by_id(id):
   conn = engine.connect()
   stmt = ("""
     SELECT * FROM branches WHERE id={};
   """).format(id)
-  return [dict(r) for r in conn.execute(stmt)][0]
+  return conn.execute(stmt).fetchone()
