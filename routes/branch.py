@@ -3,7 +3,7 @@
 
 from bottle import Bottle, template, request, HTTPResponse
 from configs.helpers import menu
-from daos.branch_dao import get_lima_branches, get_province_branches
+from daos.branch_dao import get_lima_branches, get_province_branches, get_branch_by_id
 from daos.branch_type_dao import get_all as branch_type_all
 
 subapp = Bottle()
@@ -32,17 +32,36 @@ def create_view():
       'name': '',
       'address': '',
       'phone': '',
-      'whastapp': '',
+      'whatsapp': '',
       'branch_type_id': 1,
     },
     'form_title': form_title,
     'branch_type_list': branch_type_all(),
     'branch_type_id': request.params.branch_type_id,
   }
-  print('1 +++++++++++++++++++++++')
-  print(request.params.branch_type_id)
-  print('2 +++++++++++++++++++++++')
-  print(branch_type_all()[0])
-  print('3 +++++++++++++++++++++++')
+  boby_template = template('branch_detail', locals = locals)
+  return HTTPResponse(status = 200, body = boby_template)
+
+@subapp.route('/edit', method='GET')
+def edit_view():
+  branch = get_branch_by_id(request.params.id)
+  form_title = 'Editar Sede - Lima'
+  if int(branch['branch_type_id']) == 2:
+    form_title = 'Editar Sede - Provincia'
+  locals = {
+    'title': 'Gestión de Sedes',
+    'menu': menu('/branch'),
+    'branch': {
+      'id': branch['id'],
+      'name': branch['name'],
+      'address': branch['address'],
+      'phone': branch['phone'],
+      'whatsapp': branch['whatsapp'],
+      'branch_type_id': branch['branch_type_id'],
+    },
+    'form_title': form_title,
+    'branch_type_list': branch_type_all(),
+    'branch_type_id': branch['branch_type_id'],
+  }
   boby_template = template('branch_detail', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)

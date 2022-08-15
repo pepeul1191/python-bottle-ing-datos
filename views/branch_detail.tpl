@@ -4,11 +4,11 @@
     <form action="/branch_detail/save" method="post">
       <input type="hidden" name="id" value="{{locals['branch']['id']}}"><br>
       <label for="name">Nombre:</label><br>
-      <input type="text" id="name" name="name"><br>
+      <input type="text" id="name" name="name" value="{{locals['branch']['name']}}"><br>
       <label for="name">Teléfono:</label><br>
-      <input type="text" id="phone" name="phone"><br>
+      <input type="text" id="phone" name="phone" value="{{locals['branch']['phone']}}"><br>
       <label for="name">WhatsApp:</label><br>
-      <input type="text" id="whastapp" name="whastapp"><br>
+      <input type="text" id="whatsapp" name="whatsapp" value="{{locals['branch']['whatsapp']}}"><br>
       <label for="branch_type_id">Tipo de Sede:</label><br>
       <select name="branch_type_id" disabled id="branch_type_id">
         % for branch_type in locals['branch_type_list']:

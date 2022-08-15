@@ -19,7 +19,6 @@
           <td>{{branch['phone']}}</td>
           <td>{{branch['whatsapp']}}</td>
           <td class="text-center">
-            <a class="btn" href="/branch/read?id={{branch['id']}}">Ver</a>
             <a class="btn" href="/branch/edit?id={{branch['id']}}">Editar</a>
             <a class="btn" href="/branch/delete?id={{branch['id']}}">Eliminar</a>
           </td>
@@ -51,7 +50,6 @@
           <td>{{branch['phone']}}</td>
           <td>{{branch['whatsapp']}}</td>
           <td class="text-center">
-            <a class="btn" href="/branch/read?id={{branch['id']}}">Ver</a>
             <a class="btn" href="/branch/edit?id={{branch['id']}}">Editar</a>
             <a class="btn" href="/branch/delete?id={{branch['id']}}">Eliminar</a>
           </td>
