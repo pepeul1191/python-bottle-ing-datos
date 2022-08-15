@@ -98,12 +98,12 @@ CREATE TABLE ticket_files (
 CREATE VIEW vw_tickets AS
   SELECT
     T.id, T.resume,
-      TO_CHAR(T.created,'%Y/%m/%d') AS created, TO_CHAR(T.edited,'%Y/%m/%d') AS edited,
-      T.worker_id, CONCAT(W.last_names, ', ',W.names) AS worker_name,
+      strftime(T.created,'%Y/%m/%d') AS created, strftime(T.edited,'%Y/%m/%d') AS edited,
+      T.worker_id, (W.last_names || ', ' || W.names) AS worker_name,
       T.priority_id, P.name AS priority_name,
       T.state_id, S.name AS state_name,
       T.ticket_type_id, TT.name AS ticket_type_name,
-      T.branch_id, CONCAT(BT.name, ', ',B.name) AS branch_name
+      T.branch_id, (BT.name || ', ' ||B.name) AS branch_name
   FROM tickets T
   JOIN workers W ON W.id = T.worker_id
   JOIN priorities P ON P.id = T.priority_id
@@ -111,7 +111,8 @@ CREATE VIEW vw_tickets AS
   JOIN branches B ON B.id = T.branch_id
   JOIN ticket_types TT ON TT.id = T.ticket_type_id
   JOIN branch_types BT ON B.branch_type_id = BT.id
-  ORDER BY T.created;
+  ORDER BY T.created
+/* vw_tickets(id,resume,created,edited,worker_id,worker_name,priority_id,priority_name,state_id,state_name,ticket_type_id,ticket_type_name,branch_id,branch_name) */;
 -- Dbmate schema migrations
 INSERT INTO "schema_migrations" (version) VALUES
   ('20220726004204'),
@@ -137,4 +138,5 @@ INSERT INTO "schema_migrations" (version) VALUES
   ('20220726230401'),
   ('20220804151900'),
   ('20220804160935'),
-  ('20220811183224');
+  ('20220811183224'),
+  ('20220815221108');

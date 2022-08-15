@@ -26,7 +26,6 @@ def update(id, name):
       name='{}' 
       WHERE id={};
   """).format(name, id)
-
   rs = conn.execute(stmt)
   return rs
 
