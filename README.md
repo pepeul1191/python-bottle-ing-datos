@@ -17,12 +17,8 @@ Arrancar aplicación con servidor Werkzeug:
 
 Archivo <b>.env</b>
 
-    DB_USER="root"
-    DB_PASS="123"
-    DB_HOST="127.0.0.1"
-    DB_PORT=5433
-    DB_NAME="tickets"
-    DB="sqlite:///db/app.db"
+    DB=sqlite:db/app.db
+    SQALCHEMY_CONNECTION_STRING=sqlite:///db/app.db
 
 Migraciones con DBMATE - app:
 

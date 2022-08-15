@@ -11,7 +11,7 @@ subapp = Bottle()
 def home():
   locals = {
     'title': 'Gestión de Posiciones',
-    'menu': menu('/branch'),
+    'menu': menu('/position'),
     'positions': get_all(),
   }
   boby_template = template('position/index', locals = locals)
