@@ -51,7 +51,15 @@ def update(id, names, last_names, phone, email, position_id):
       names='{}',  last_names='{}',  phone='{}',  email='{}', position_id={} 
       WHERE id={};
   """).format(names, last_names, phone, email, position_id, id)
+  rs = conn.execute(stmt)
+  return rs
 
+def update_image_url(id, image_url):
+  conn = engine.connect()
+  stmt = ("""
+    UPDATE workers SET 
+      image_url='{}' WHERE id={};
+  """).format(image_url, id)
   rs = conn.execute(stmt)
   return rs
 

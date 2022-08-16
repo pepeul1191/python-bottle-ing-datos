@@ -35,7 +35,7 @@ CREATE TABLE workers (
   last_names	VARCHAR(45) NOT NULL,
 	email	VARCHAR(45) NOT NULL,
   phone	VARCHAR(25),
-  position_id	INT,
+  position_id	INT, image_url VARCHAR(100),
   FOREIGN KEY(position_id) REFERENCES positions ( id ) ON DELETE CASCADE
 );
 CREATE TABLE branches_workers (
@@ -139,4 +139,5 @@ INSERT INTO "schema_migrations" (version) VALUES
   ('20220804151900'),
   ('20220804160935'),
   ('20220811183224'),
-  ('20220815221108');
+  ('20220815221108'),
+  ('20220816172952');

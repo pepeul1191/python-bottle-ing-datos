@@ -27,6 +27,16 @@
   </form> 
 </div>
 % if locals['worker']['id'] != 'E': 
+  <h3>Imagen del Trabajador</h3>
+  <form method="post" enctype="multipart/form-data" action="/worker/upload_image">
+    <input type="hidden" name="id" value="{{locals['worker']['id']}}">
+    <input type="hidden" name="url" value="/worker/edit?id={{locals['worker']['id']}}">
+    <input type="file" id="file" name="file">
+    <br><br>
+    <img src="/{{locals['worker']['image_url']}}" alt="{{locals['worker']['last_names']}}, {{locals['worker']['names']}}" width="100" height="100"> 
+    <br>
+    <button class="btn">Asociar</button>
+  </form>
   <h3>Asociar a Sedes de Lima</h3>
   <form action="/worker/branch" method="post" id="limaBranchForm">
     <input type="hidden" name="worker_id" value="{{locals['worker']['id']}}">

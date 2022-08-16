@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from email import message
+import os
+from datetime import datetime
 from bottle import Bottle, template, request, HTTPResponse
 from configs.helpers import menu
 from daos.position_dao import get_all as get_all_positions
-from daos.worker_dao import get_all, get_worker_by_id, create, update, delete
+from daos.worker_dao import get_all, get_worker_by_id, create, update, delete, update_image_url
 from daos.branch_worker_dao import get_worker_branches, get_record_by_ids, create as create_branch_worker, delete as delete_branch_worker
 
 subapp = Bottle()
@@ -59,6 +62,7 @@ def edit_view():
         'phone': worker['phone'],
         'email': worker['email'],
         'position_id': worker['position_id'],
+        'image_url': worker['image_url'],
       },
       'form_title': form_title,
       'lima_branchs': get_worker_branches(1, request.params.id),
@@ -134,9 +138,6 @@ def save():
   for branch_id in branches_id_not_exist:
     branch_id = int(branch_id)
     e = get_record_by_ids(worker_id, branch_id)
-    print('1 +++++++++++++++++++++++++++')
-    print(e)
-    print('2 +++++++++++++++++++++++++++')
     if e != None:
       delete_branch_worker(worker_id, branch_id)
   locals = {
@@ -147,3 +148,26 @@ def save():
   }
   boby_template = template('_notification', locals = locals)
   return HTTPResponse(status = 200, body = boby_template)
+
+@subapp.route('/upload_image', method='POST')
+def upload_image():
+  status = 200
+  message = 'Imagen asociada al trabajador'
+  upload = request.files.get('file')
+  id = int(request.forms.get('id'),)
+  ext = os.path.splitext(upload.filename)
+  timestamp = datetime.timestamp(datetime.now())*10000
+  if ext[1] not in ('.png', '.jpg'):
+    status = 500
+    message = 'Debe de seleccionar una imagen'
+  file_path = "{path}/{file}".format(path='static/uploads', file=str(timestamp) + ext[1])
+  upload.save(file_path)
+  update_image_url(id, "{path}/{file}".format(path='uploads', file=str(timestamp) + ext[1]))
+  locals = {
+    'title': 'Notifiación: ' + message,
+    'message': message,
+    'url': request.forms.get('url'),
+    'menu': menu('/xd'),
+  }
+  boby_template = template('_notification', locals = locals)
+  return HTTPResponse(status = status, body = boby_template)

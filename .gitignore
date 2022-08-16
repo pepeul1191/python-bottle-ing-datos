@@ -9,3 +9,4 @@ data/*
 .env
 tmp
 output.xml
+static/uploads
