@@ -5,6 +5,7 @@ from bottle import Bottle, template, request, HTTPResponse
 from configs.helpers import menu
 from daos.position_dao import get_all as get_all_positions
 from daos.worker_dao import get_all, get_worker_by_id, create, update, delete
+from daos.branch_worker_dao import get_worker_branches, get_record_by_ids, create as create_branch_worker, delete as delete_branch_worker
 
 subapp = Bottle()
 
@@ -60,8 +61,11 @@ def edit_view():
         'position_id': worker['position_id'],
       },
       'form_title': form_title,
+      'lima_branchs': get_worker_branches(1, request.params.id),
+      'province_branchs': get_worker_branches(2, request.params.id),
       'position_list': get_all_positions(),
     }
+    print(get_worker_branches(1, request.params.id))
     boby_template = template('worker/detail', locals = locals)
     return HTTPResponse(status = 200, body = boby_template)
   else:
@@ -116,3 +120,30 @@ def delete_by_id():
   }
   boby_template = template('_notification', locals = locals)
   return HTTPResponse(status = 404, body = boby_template)
+
+@subapp.route('/branch', method='POST')
+def save():
+  worker_id = int(request.forms.get('worker_id'))
+  branches_id_exist = request.forms.get('branches_id_exist').split(',')
+  branches_id_not_exist = request.forms.get('branches_id_not_exist').split(',')
+  for branch_id in branches_id_exist:
+    branch_id = int(branch_id)
+    e = get_record_by_ids(worker_id, branch_id)
+    if e == None:
+      create_branch_worker(worker_id, branch_id)
+  for branch_id in branches_id_not_exist:
+    branch_id = int(branch_id)
+    e = get_record_by_ids(worker_id, branch_id)
+    print('1 +++++++++++++++++++++++++++')
+    print(e)
+    print('2 +++++++++++++++++++++++++++')
+    if e != None:
+      delete_branch_worker(worker_id, branch_id)
+  locals = {
+    'title': 'Notifiación: Sedes del Empleado Actualizado',
+    'message': 'Sedes del Empleado Actualizado',
+    'url': request.forms.get('url'),
+    'menu': menu('/xd'),
+  }
+  boby_template = template('_notification', locals = locals)
+  return HTTPResponse(status = 200, body = boby_template)
