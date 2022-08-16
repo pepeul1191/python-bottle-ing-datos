@@ -27,3 +27,38 @@ def get_all(step, page):
     'workers': [dict(r) for r in conn.execute(stmt)]
   }
   return resp
+
+def get_worker_by_id(id):
+  conn = engine.connect()
+  stmt = ("""
+    SELECT * FROM workers WHERE id={};
+  """).format(id)
+  return conn.execute(stmt).fetchone()
+
+def create(names, last_names, phone, email, position_id):
+  conn = engine.connect()
+  stmt = ("""
+    INSERT INTO workers (names, last_names, phone, email, position_id) 
+      VALUES ('{}','{}','{}','{}',{});
+  """).format(names, last_names, phone, email, position_id)
+  rs = conn.execute(stmt)
+  return rs.lastrowid
+
+def update(id, names, last_names, phone, email, position_id):
+  conn = engine.connect()
+  stmt = ("""
+    UPDATE workers SET 
+      names='{}',  last_names='{}',  phone='{}',  email='{}', position_id={} 
+      WHERE id={};
+  """).format(names, last_names, phone, email, position_id, id)
+
+  rs = conn.execute(stmt)
+  return rs
+
+def delete(id):
+  conn = engine.connect()
+  stmt = ("""
+    DELETE FROM workers WHERE id={};
+  """).format(id)
+  rs = conn.execute(stmt)
+  return rs

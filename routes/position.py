@@ -69,7 +69,6 @@ def delete_by_id():
   }
   boby_template = template('_notification', locals = locals)
   return HTTPResponse(status = 404, body = boby_template)
-  
 
 @subapp.route('/save', method='POST')
 def save():

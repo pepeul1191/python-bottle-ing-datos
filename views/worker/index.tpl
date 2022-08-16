@@ -27,7 +27,7 @@
       % end
     </tbody>
     <tfoot>
-      <a class="btn" href="/worker/create">Agregar Posición</a>
+      <a class="btn" href="/worker/create">Agregar Empleado</a>
       <br>
       <br>
       % if locals['page'] != 1: 
