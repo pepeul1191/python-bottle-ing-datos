@@ -8,4 +8,6 @@
     <li>Gestión de Posiciones</li>
     <li>Gestión de Tickets</li>
   </ul>
+  <script type="text/javascript">
+  </script>
 % include('_footer.tpl')

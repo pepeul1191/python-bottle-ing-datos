@@ -3,4 +3,6 @@
   <div>
     <h1>TODO</h1>
   </div>
+  <script type="text/javascript">
+  </script>
 % include('_footer.tpl')

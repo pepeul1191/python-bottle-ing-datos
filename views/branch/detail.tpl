@@ -26,5 +26,7 @@
     <button class="btn">Guardar Cambios</button>
   </form> 
 </div>
+<script type="text/javascript">
+</script>
 
 % include('_footer.tpl')

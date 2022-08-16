@@ -10,4 +10,6 @@
   <p>Some text..</p>
   <p>Some text..</p>
   <p>Some text..</p>
+  <script type="text/javascript">
+  </script>
 % include('_footer.tpl')

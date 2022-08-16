@@ -62,5 +62,6 @@
       <br>
     </tfoot>
   </table>
-
+  <script type="text/javascript">
+  </script>
 % include('_footer.tpl')
