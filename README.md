@@ -19,7 +19,7 @@ Archivo <b>.env</b>
 
     DB=sqlite:db/app.db
     SQALCHEMY_CONNECTION_STRING=sqlite:///db/app.db
-    ENV=localhost || replit
+    ENV=localhost||replit
 
 Migraciones con DBMATE - app:
 

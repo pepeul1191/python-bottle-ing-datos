@@ -1,13 +1,28 @@
 % include('_header.tpl')
-  <h2>Demo</h2>
-  <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
-  <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to 25% width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>
-  <p>Also notice that we have set overflow:auto to sidenav. This will add a scrollbar when the sidenav is too long (for example if it has over 50 links inside of it).</p>
-  <p>Some text..</p>
-  <p>Some text..</p>
-  <p>Some text..</p>
-  <p>Some text..</p>
-  <p>Some text..</p>
-  <p>Some text..</p>
-  <p>Some text..</p>
+  <h2>Gestión de Prioridades</h2>
+  <table style="width:100%">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th class="text-center">Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      % for priority in locals['priorities']:
+        <tr>
+          <td>{{priority['name']}}</td>
+          <td class="text-center">
+            <a class="btn" href="/priority/edit?id={{priority['id']}}">Editar</a>
+            <a class="btn" href="/priority/delete?id={{priority['id']}}">Eliminar</a>
+          </td>
+        </tr>
+      % end
+    </tbody>
+    <tfoot>
+      <a class="btn" href="/priority/create?priority_type_id=1">Agregar Posición</a>
+      <br>
+      <br>
+    </tfoot>
+  </table>
+
 % include('_footer.tpl')
