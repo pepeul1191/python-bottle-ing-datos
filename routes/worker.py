@@ -69,7 +69,6 @@ def edit_view():
       'province_branchs': get_worker_branches(2, request.params.id),
       'position_list': get_all_positions(),
     }
-    print(get_worker_branches(1, request.params.id))
     boby_template = template('worker/detail', locals = locals)
     return HTTPResponse(status = 200, body = boby_template)
   else:

@@ -38,8 +38,8 @@ def get_worker_by_id(id):
 def create(names, last_names, phone, email, position_id):
   conn = engine.connect()
   stmt = ("""
-    INSERT INTO workers (names, last_names, phone, email, position_id) 
-      VALUES ('{}','{}','{}','{}',{});
+    INSERT INTO workers (names, last_names, phone, email, position_id, image_url) 
+      VALUES ('{}','{}','{}','{}',{}, 'default-user.png');
   """).format(names, last_names, phone, email, position_id)
   rs = conn.execute(stmt)
   return rs.lastrowid
