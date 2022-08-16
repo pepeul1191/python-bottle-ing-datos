@@ -37,7 +37,7 @@ def delete(id):
   rs = conn.execute(stmt)
   return rs
 
-def get_position_by_id(id):
+def get_state_by_id(id):
   conn = engine.connect()
   stmt = ("""
     SELECT * FROM states WHERE id={};
