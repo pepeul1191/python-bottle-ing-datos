@@ -5,7 +5,7 @@ def menu(url):
     {'name': 'Gestión de Posiciones', 'url': '/position', 'active': False},
     {'name': 'Gestión de Prioridades', 'url': '/priority', 'active': False},
     {'name': 'Gestión de Estados', 'url': '/state', 'active': False},
-    {'name': 'Gestión de Empleados', 'url': '/employee?step=10&page=1', 'active': False},
+    {'name': 'Gestión de Empleados', 'url': '/worker?step=10&page=1', 'active': False},
     {'name': 'Gestión de Tickets', 'url': '/ticket?step=10&page=1', 'active': False},
     {'name': 'Demo', 'url': '/demo', 'active': False},
   ]

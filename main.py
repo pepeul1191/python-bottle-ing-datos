@@ -8,7 +8,7 @@ from routes.demo import subapp as demo_routes
 from routes.branch import subapp as branch_routes
 from routes.position import subapp as position_routes
 from routes.ticket import subapp as ticket_routes
-from routes.employee import subapp as employee_routes
+from routes.worker import subapp as worker_routes
 from routes.priority import subapp as priority_routes
 from routes.state import subapp as state_routes
 from configs.helpers import menu
@@ -44,7 +44,7 @@ if __name__ == '__main__':
   app.mount('/demo', demo_routes)
   app.mount('/branch', branch_routes)
   app.mount('/position', position_routes)
-  app.mount('/employee', employee_routes)
+  app.mount('/worker', worker_routes)
   app.mount('/priority', priority_routes)
   app.mount('/state', state_routes)
   app.mount('/ticket', ticket_routes)

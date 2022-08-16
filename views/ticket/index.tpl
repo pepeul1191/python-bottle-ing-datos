@@ -38,12 +38,12 @@
       <br>
       % if locals['page'] != 1: 
         <a class="btn" href="/ticket?step=10&page=1">Primero</a>&nbsp;&nbsp;
-        <a class="btn" href="ticket?step=10&page={{locals['page'] - 1}}">Anterior</a>&nbsp;&nbsp;
+        <a class="btn" href="/ticket?step=10&page={{locals['page'] - 1}}">Anterior</a>&nbsp;&nbsp;
       % end
       {{locals['page']}}/ {{locals['pages']}}&nbsp;&nbsp;
       % if locals['page'] != locals['pages']: 
-        <a class="btn" href="ticket?step=10&page={{locals['page'] + 1}}">Siguiente</a>&nbsp;&nbsp;
-        <a class="btn" href="ticket?step=10&page={{locals['pages']}}">Último</a>
+        <a class="btn" href="/ticket?step=10&page={{locals['page'] + 1}}">Siguiente</a>&nbsp;&nbsp;
+        <a class="btn" href="/ticket?step=10&page={{locals['pages']}}">Último</a>
       % end
       <br>
       <br>
