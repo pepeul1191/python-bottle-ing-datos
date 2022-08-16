@@ -1,17 +1,23 @@
 ## Base de Datos
 
-Instalar y activar el ambiente virtual:
+Instalar y activar el ambiente virtual - Linux:
 
     $ sudo apt install python3-virtualenv python3-venv
     $ python3 -m venv ./env
     $ source env/bin/activate
 
-Arrancar aplicación con servidor Werkzeug:
+Instalar y activar el ambiente virtual - Windows:
+
+    > pip install virtualenv
+    > virtualenv env
+    > \env\Scripts\activate.bat
+
+Arrancar aplicación:
 
     $ cd <<carpeta-proyecto>>
     $ pip install -r requirements.txt
-    $ mkdir tmp
-    $ python app.py
+    $ mkdir static/uploads
+    $ python main.py
 
 ## Migraciones
 
@@ -38,4 +44,4 @@ Fuentes:
 + https://github.com/pepeul1191/tutorial-flask
 + https://pypi.org/project/lorem-text/
 + https://github.com/pepeul1191/python-accesos-v2
-
++ https://www.liquidweb.com/kb/how-to-setup-a-python-virtual-environment-on-windows-10/

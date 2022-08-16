@@ -50,7 +50,9 @@ if __name__ == '__main__':
   app.mount('/ticket', ticket_routes)
   # run app
   load_dotenv()
-  print(os.getenv('ENV'))
+  host = 'localhost'
+  if os.getenv('ENV') == 'replit':
+    host = '0.0.0.0'
   run(
-    app, host='localhost', port=8080, debug=True,reloader=True
+    app, host=host, port=8080, debug=True,reloader=True
   )
