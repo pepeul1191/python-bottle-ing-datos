@@ -10,7 +10,7 @@ Instalar y activar el ambiente virtual - Windows:
 
     > pip install virtualenv
     > virtualenv env
-    > \env\Scripts\activate.bat
+    > env\Scripts\activate.bat
 
 Arrancar aplicación:
 
